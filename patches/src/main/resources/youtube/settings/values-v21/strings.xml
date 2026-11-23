@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Translation Exception -->
+    <string name="revanced_spoof_streaming_data_side_effects_tv_embedded">@string/revanced_spoof_streaming_data_side_effects_tv</string>
+    <string name="revanced_spoof_streaming_data_side_effects_tv_legacy">@string/revanced_spoof_streaming_data_side_effects_tv</string>
+    <string name="revanced_spoof_streaming_data_side_effects_tv_simply">@string/revanced_spoof_streaming_data_side_effects_tv</string>
+    <string name="revanced_spoof_streaming_data_side_effects_android_xr">@string/revanced_spoof_streaming_data_side_effects_android_vr</string>
+    <string name="revanced_spoof_streaming_data_side_effects_tv_console">@string/revanced_spoof_streaming_data_side_effects_tv</string>
+    <string name="revanced_spoof_streaming_data_side_effects_visionos_1_02">@string/revanced_spoof_streaming_data_side_effects_visionos</string>
+    <string name="revanced_spoof_streaming_data_side_effects_visionos_1_06">@string/revanced_spoof_streaming_data_side_effects_visionos</string>
+</resources>
