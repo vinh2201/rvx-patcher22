@@ -4,6 +4,7 @@ import app.revanced.patcher.extensions.addInstruction
 import app.revanced.patcher.extensions.addInstructionsWithLabels
 import app.revanced.patcher.extensions.getInstruction
 import app.revanced.patcher.patch.BytecodePatchContext
+import app.revanced.patcher.patch.booleanOption
 import app.revanced.patcher.patch.bytecodePatch
 import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patcher.patch.stringOption
@@ -279,6 +280,15 @@ val settingsPatch = resourcePatch(
         required = true,
     )
 
+    val safeVmMode by booleanOption(
+        default = true,
+        name = "Safe VM mode",
+        description = "Runs the app without ahead-of-time compiled code. " +
+                "This can stop the app from crashing at launch on some devices, " +
+                "but the app may start and run slower.",
+        required = true,
+    )
+
     apply {
         /**
          * check patch options
@@ -290,6 +300,19 @@ val settingsPatch = resourcePatch(
             .valueOrThrow()
 
         ResourceUtils.setContext(this)
+
+        /**
+         * stability: ask the system to run the app in safe mode
+         */
+        if (safeVmMode == true) {
+            document("AndroidManifest.xml").use { document ->
+                val applicationNode =
+                    document
+                        .getElementsByTagName("application")
+                        .item(0) as Element
+                applicationNode.setAttribute("android:vmSafeMode", "true")
+            }
+        }
 
         /**
          * remove strings duplicated with RVX resources
